@@ -124,7 +124,7 @@ fn main() {
         global_size_before += size_before;
         let sb_human_readable = size_before.file_size(options::DECIMAL).unwrap();
 
-        print!("Repo: {:?}:", &repo);
+        print!("Repo: {:?}: ", &repo);
         print!("{} => ", sb_human_readable);
         // flush stdout for incremental print
         match stdout().flush() {
