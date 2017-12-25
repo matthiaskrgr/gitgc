@@ -5,3 +5,9 @@ authors = ["Matthias Krüger <matthias.krueger@famsik.de>"]
 
 [dependencies]
 walkdir = "2.0"
+humansize = "1.0"
+git2 = "0.6"
+
+
+[profile.release]
+lto = true
