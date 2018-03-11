@@ -6,8 +6,10 @@ authors = ["Matthias Krüger <matthias.krueger@famsik.de>"]
 [dependencies]
 walkdir = "2.0"
 humansize = "1.0"
-git2 = "0.6"
+git2 = "0.7"
 
 
 [profile.release]
 lto = true
+opt-level=3
+codegen-units=1
