@@ -134,39 +134,27 @@ fn main() {
         }
         // delete all history of all checkouts and so on.
         // this will enable us to remove *all* dangling commits
-        match Command::new("git")
+        let _ = Command::new("git")
             .arg("reflog")
             .arg("expire")
             .arg("--expire=1.minute")
             .arg("--all")
             .current_dir(&repo)
-            .output()
-        {
-            Ok(_out) => {}
-            Err(_e) => panic!("error: git reflog"),
-        }
+            .status();
 
-        match Command::new("git")
+        let _ = Command::new("git")
             .arg("pack-refs")
             .arg("--all")
             .arg("--prune")
             .current_dir(&repo)
-            .output()
-        {
-            Ok(_out) => {}
-            Err(_e) => panic!("error: pack-refs"),
-        }
+            .status();
         // actually recompress repo from scratch
-        match Command::new("git")
+        let _ = Command::new("git")
             .arg("gc")
             .arg("--aggressive")
             .arg("--prune=now")
             .current_dir(&repo)
-            .output()
-        {
-            Ok(_out) => {}
-            Err(_e) => println!("error: git gc"),
-        }
+            .status();
         // recompute size
         let size_after = size_git_repo(repo);
         global_size_after += size_after;
