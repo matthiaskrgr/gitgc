@@ -1,9 +1,10 @@
+````bash
 git clone git://github.com/rust-lang/rust
 ./x.py
 gitgc
+````
 
-
-
+````
 
 Searching for repos ...
 found repo: "/tmp/gc_test/rust/.git/"
@@ -57,4 +58,4 @@ Repo: "/tmp/gc_test/rust/.git/modules/src/binaryen/modules/test/spec/": 589.82 K
 Repo: "/tmp/gc_test/rust/.git/modules/src/binaryen/modules/test/emscripten/": 162.67 MB => 105.43 MB (-57.24 MB, -35.19%)
 Total:
 1.42 GB => 605.12 MB (-817.10 MB, -57.45%)
-
+````
