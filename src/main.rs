@@ -1,8 +1,5 @@
-// enable additional clippy warnings
-
 #![feature(tool_lints)]
-#![feature(test)]
-// these [allow()] by default, make them warn:
+
 #![warn(
     ellipsis_inclusive_range_patterns,
     single_use_lifetimes,
@@ -14,8 +11,8 @@
     rust_2018_compatibility,
     rust_2018_idioms
 )]
-// enable additional clippy warnings
-#[warn(
+
+#![warn(
     clippy::all,
     clippy::correctness,
     clippy::perf,
@@ -32,10 +29,6 @@
     clippy::needless_borrow
 )]
 
-
-extern crate git2;
-extern crate humansize;
-extern crate walkdir;
 
 use std::process::Command;
 use std::env;
@@ -104,7 +97,7 @@ fn size_git_repo(repo: &std::path::PathBuf) -> u64 {
             || line.starts_with("size-garbage:")
         {
             //println!("line: {}", line);
-            let mut v: Vec<&str> = line.split(' ').collect();
+            let v: Vec<&str> = line.split(' ').collect();
             let digit = v.last().unwrap();
             let numb = digit.parse::<u64>().unwrap();
             size += numb;
