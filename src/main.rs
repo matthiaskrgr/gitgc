@@ -1,5 +1,4 @@
 #![feature(tool_lints)]
-
 #![warn(
     ellipsis_inclusive_range_patterns,
     single_use_lifetimes,
@@ -11,7 +10,6 @@
     rust_2018_compatibility,
     rust_2018_idioms
 )]
-
 #![warn(
     clippy::all,
     clippy::correctness,
@@ -29,14 +27,13 @@
     clippy::needless_borrow
 )]
 
-
-use std::process::Command;
 use std::env;
 use std::io::{stdout, Write};
+use std::process::Command;
 
-use walkdir::WalkDir;
 use git2::Repository;
 use humansize::{file_size_opts as options, FileSize};
+use walkdir::WalkDir;
 
 fn size_diff_format(size_before: u64, size_after: u64, dspl_sze_before: bool) -> String {
     let size_diff: i64 = size_after as i64 - size_before as i64;
@@ -93,7 +90,8 @@ fn size_git_repo(repo: &std::path::PathBuf) -> u64 {
     let stdout = String::from_utf8_lossy(&output.stdout);
     let mut size = 0;
     for line in stdout.lines() {
-        if line.starts_with("size:") || line.starts_with("size-pack:")
+        if line.starts_with("size:")
+            || line.starts_with("size-pack:")
             || line.starts_with("size-garbage:")
         {
             //println!("line: {}", line);
