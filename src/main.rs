@@ -1,15 +1,5 @@
 // enable additional clippy warnings
-#![cfg_attr(feature = "cargo-clippy", warn(int_plus_one))]
-#![cfg_attr(feature = "cargo-clippy", warn(shadow_reuse))]
-#![cfg_attr(feature = "cargo-clippy", warn(shadow_same))]
-#![cfg_attr(feature = "cargo-clippy", warn(shadow_unrelated))]
-#![cfg_attr(feature = "cargo-clippy", warn(mut_mut))]
-#![cfg_attr(feature = "cargo-clippy", warn(nonminimal_bool))]
-#![cfg_attr(feature = "cargo-clippy", warn(pub_enum_variant_names))]
-#![cfg_attr(feature = "cargo-clippy", warn(range_plus_one))]
-#![cfg_attr(feature = "cargo-clippy", warn(string_add))]
-#![cfg_attr(feature = "cargo-clippy", warn(string_add_assign))]
-#![cfg_attr(feature = "cargo-clippy", warn(stutter))]
+
 
 extern crate git2;
 extern crate humansize;
@@ -46,7 +36,7 @@ fn size_diff_format(size_before: u64, size_after: u64, dspl_sze_before: bool) ->
                 size_before_human_readabel, size_after_human_readable
             )
         } else {
-            format!("{}", size_after_human_readable)
+            size_after_human_readable.to_string()
         }
     } else if dspl_sze_before {
         format!(
