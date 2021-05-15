@@ -1,4 +1,3 @@
-#![feature(tool_lints)]
 #![warn(
     ellipsis_inclusive_range_patterns,
     single_use_lifetimes,
