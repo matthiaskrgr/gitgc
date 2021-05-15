@@ -159,11 +159,25 @@ fn main() {
             .arg("--prune")
             .current_dir(&repo)
             .status();
-        // actually recompress repo from scratch
+        // prune unneeded stuff
         let _ = Command::new("git")
             .arg("gc")
-            .arg("--aggressive")
             .arg("--prune=now")
+            .current_dir(&repo)
+            .status();
+        // prune, just in case
+        let _ = Command::new("git").arg("prune").current_dir(&repo).status();
+        // recompress repo
+        // git repack -a -d -f --depth=250 --window=250 --max-pack-size=1G
+        let _ = Command::new("git")
+            .arg("repack")
+            .arg("-a")
+            .arg("-d")
+            .arg("-f")
+            .arg("--depth=250")
+            .arg("--window=250")
+            .arg("--max-pack-size=1G")
+            .arg("--unpack-unreachable=now")
             .current_dir(&repo)
             .status();
         // recompute size
